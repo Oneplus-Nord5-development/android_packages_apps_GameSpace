@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2026 The LineageOS Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources>
+    <string name="app_name">GameSpace</string>
+    <string name="gamespace_enabled_title">Enable GameSpace</string>
+    <string name="gamespace_enabled_summary">Show a draggable floating GameSpace button and overlay tools while gaming.</string>
+    <string name="edge_position_title">Panel side</string>
+    <string name="fps_meter_title">FPS meter</string>
+    <string name="fps_meter_summary">Show live FPS on the floating GameSpace button while gaming.</string>
+    <string name="system_meter_title">System meter</string>
+    <string name="system_meter_summary">Show a compact floating system strip with CPU, temperature, GPU and FPS while gaming.</string>
+    <string name="compact_notifications_title">Compact notifications</string>
+    <string name="compact_notifications_summary">Keep recent notifications inside the GameSpace panel.</string>
+    <string name="call_handling_title">Incoming calls</string>
+    <string name="game_library_title">Game library</string>
+    <string name="game_library_summary">Manage extra apps that should trigger GameSpace.</string>
+    <string name="sidebar_apps_title">Sidebar apps</string>
+    <string name="sidebar_apps_summary">Choose apps for quick launch from the GameSpace panel.</string>
+    <string name="meter_position_reset_title">Reset meter positions</string>
+    <string name="meter_position_reset_summary">Snap the FPS and system strips back to their default corner.</string>
+    <string name="panel_close">Close</string>
+    <string name="panel_open">Open GameSpace panel</string>
+    <string name="panel_settings">Settings</string>
+    <string name="panel_no_notifications">No recent notifications</string>
+    <string name="dnd_tile_title">DND</string>
+    <string name="compact_tile_title">Notifications</string>
+    <string name="call_tile_title">Calls</string>
+    <string name="settings_tile_title">Settings</string>
+    <string name="settings_tile_summary">Open settings</string>
+    <string name="fps_tile_title">FPS</string>
+    <string name="fps_tile_placeholder">--</string>
+    <string name="system_tile_title">System</string>
+    <string name="system_tile_placeholder">--</string>
+    <string name="panel_dnd_on">DND on</string>
+    <string name="panel_dnd_off">DND off</string>
+    <string name="panel_compact_on">Compact on</string>
+    <string name="panel_compact_off">Compact off</string>
+    <string name="panel_calls_off">Calls off</string>
+    <string name="panel_calls_reject">Calls reject</string>
+    <string name="panel_calls_answer">Calls answer</string>
+    <string name="panel_active_game">Playing %1$s</string>
+    <string name="panel_unknown_game">GameSpace ready</string>
+    <string name="fps_meter_label">FPS</string>
+    <string name="system_meter_label">System</string>
+    <string name="system_meter_value">CPU %1$.0f%%  GPU %2$.0f%%  %3$.1fC  FPS %4$.0f</string>
+    <string name="system_tile_value">CPU %1$.0f%%\nGPU %2$.0f%%  %3$.1fC</string>
+    <string name="fps_meter_value">FPS %1$.0f/%2$.0f</string>
+    <string name="fps_tile_value">%1$.0f / %2$.0f Hz</string>
+    <string name="selector_library_title">Extra library apps</string>
+    <string name="selector_library_subtitle">Auto-detected games are always included. Select additional apps that should trigger GameSpace.</string>
+    <string name="selector_sidebar_title">Sidebar apps</string>
+    <string name="selector_sidebar_subtitle">Choose the apps shown for quick launch from the GameSpace panel.</string>
+    <string name="selector_auto_detected_game">Auto-detected game</string>
+    <string name="selector_selected">Selected</string>
+    <string name="selector_count_summary">%1$d apps selected</string>
+    <string name="edge_left">Left</string>
+    <string name="edge_right">Right</string>
+    <string name="call_mode_off">Off</string>
+    <string name="call_mode_reject">Auto reject</string>
+    <string name="call_mode_answer">Auto answer</string>
+    <string name="settings_saved">Saved</string>
+    <string name="settings_empty_state">No launchable apps found.</string>
+    <string name="notification_compact_item">%1$s  %2$s</string>
+</resources>
