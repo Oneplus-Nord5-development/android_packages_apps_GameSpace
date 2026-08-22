@@ -15,13 +15,23 @@
     limitations under the License.
 -->
 <resources>
-    <color name="gamespace_icon_bg">#1E2A1E</color>
-    <color name="gamespace_progress">#77C458</color>
-    <color name="gamespace_surface">#D92B2F2B</color>
-    <color name="gamespace_surface_alt">#E0242824</color>
-    <color name="gamespace_outline">#523A403A</color>
-    <color name="gamespace_tile_surface">#E8343834</color>
-    <color name="gamespace_tile_active">#E0AFC0FF</color>
-    <color name="gamespace_tile_active_stroke">#80D7E0FF</color>
-    <color name="gamespace_tile_icon">#D0D7D0</color>
+    <!-- System Monet dynamic palette mappings for overlay components -->
+    <color name="gamespace_icon_bg">@android:color/system_neutral1_900</color>
+    <color name="gamespace_progress">@android:color/system_accent1_300</color>
+
+    <!-- Overlay Panel (Deep neutral surface container, no gradient, no hardcoded colors) -->
+    <color name="gamespace_surface">@android:color/system_neutral1_900</color>
+    <color name="gamespace_surface_alt">@android:color/system_neutral1_900</color>
+
+    <!-- Tiles (Monet Surface Container & Primary Container for active states) -->
+    <color name="gamespace_tile_surface">@android:color/system_neutral1_800</color>
+    <color name="gamespace_tile_text">@android:color/system_neutral1_100</color>
+    <color name="gamespace_tile_summary">@android:color/system_neutral2_200</color>
+    <color name="gamespace_tile_icon">@android:color/system_neutral2_200</color>
+
+    <!-- Active Tile: System Monet Primary Container & On-Primary-Container -->
+    <color name="gamespace_tile_active">@android:color/system_accent1_700</color>
+    <color name="gamespace_tile_active_text">@android:color/system_accent1_100</color>
+    <color name="gamespace_tile_active_summary">@android:color/system_accent1_200</color>
+    <color name="gamespace_tile_active_icon">@android:color/system_accent1_100</color>
 </resources>

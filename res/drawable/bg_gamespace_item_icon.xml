@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
     Copyright (C) 2026 The LineageOS Project
 
@@ -14,6 +15,7 @@
     limitations under the License.
 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-    <solid android:color="@android:color/system_neutral1_900" />
+    android:shape="rectangle">
+    <corners android:radius="14dp" />
+    <solid android:color="?attr/colorSurfaceContainerHighest" />
 </shape>

@@ -75,4 +75,7 @@
     <string name="settings_saved">Saved</string>
     <string name="settings_empty_state">No launchable apps found.</string>
     <string name="notification_compact_item">%1$s  %2$s</string>
+    <string name="section_overlay_meters">Overlay &amp; meters</string>
+    <string name="section_in_game_behavior">In-game behavior</string>
+    <string name="section_apps_customization">Apps &amp; customization</string>
 </resources>

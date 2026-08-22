@@ -33,6 +33,7 @@ import com.android.gamespace.R;
 import com.android.gamespace.data.AppEntry;
 import com.android.gamespace.data.GameSpacePreferences;
 import com.android.gamespace.runtime.GameSpaceService;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -64,14 +65,25 @@ public class AppSelectionActivity extends FragmentActivity {
         RecyclerView recyclerView = findViewById(R.id.app_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
         if (MODE_LIBRARY.equals(mode)) {
             setTitle(R.string.selector_library_title);
+            if (toolbar != null) {
+                toolbar.setTitle(R.string.selector_library_title);
+            }
             subtitle.setText(R.string.selector_library_subtitle);
             mSelectedPackages.addAll(GameSpacePreferences.getManualLibraryPackages(this));
         } else {
             setTitle(R.string.selector_sidebar_title);
+            if (toolbar != null) {
+                toolbar.setTitle(R.string.selector_sidebar_title);
+            }
             subtitle.setText(R.string.selector_sidebar_subtitle);
             mSelectedPackages.addAll(GameSpacePreferences.getSidebarPackages(this));
+        }
+
+        if (toolbar != null) {
+            toolbar.setNavigationOnClickListener(v -> finish());
         }
 
         List<AppEntry> apps = loadLaunchableApps();

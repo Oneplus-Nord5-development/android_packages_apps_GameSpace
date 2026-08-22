@@ -72,7 +72,7 @@ final class OverlayController {
     private static final int FAB_SIZE_DP = 52;
     private static final int FAB_FRAME_SIZE_DP = 60;
     private static final int FAB_BADGE_SIZE_DP = 28;
-    private static final int PANEL_CONTENT_WIDTH_DP = 272;
+    private static final int PANEL_CONTENT_WIDTH_DP = 292;
 
     private final Context mContext;
     private final WindowManager mWindowManager;
@@ -88,6 +88,7 @@ final class OverlayController {
     private ScrollView mPanelScrollView;
     private LinearLayout mQuickLaunchContainer;
     private LinearLayout mNotificationContainer;
+    private ImageView mPanelIcon;
     private TextView mPanelTitle;
     private TextView mPanelSubtitle;
     private View mFpsTile;
@@ -383,6 +384,7 @@ final class OverlayController {
         mPanelScrollView = panel.findViewById(R.id.panel_scroll);
         mQuickLaunchContainer = panel.findViewById(R.id.quick_launch_container);
         mNotificationContainer = panel.findViewById(R.id.notification_container);
+        mPanelIcon = panel.findViewById(R.id.panel_icon);
         mPanelTitle = panel.findViewById(R.id.panel_title);
         mPanelSubtitle = panel.findViewById(R.id.panel_subtitle);
         mFpsTile = panel.findViewById(R.id.fps_tile);
@@ -409,7 +411,7 @@ final class OverlayController {
         mSettingsTileIcon = panel.findViewById(R.id.settings_tile_icon);
         mSettingsTileTitle = panel.findViewById(R.id.settings_tile_title);
         mSettingsTileSummary = panel.findViewById(R.id.settings_tile_summary);
-        Button closeButton = panel.findViewById(R.id.close_button);
+        View closeButton = panel.findViewById(R.id.close_button);
 
         setTileState(mFpsTile, mFpsTileIcon, mFpsTileTitle, mFpsTileSummary, false);
         setTileState(mSystemTile, mSystemTileIcon, mSystemTileTitle, mSystemTileSummary, false);
@@ -431,7 +433,9 @@ final class OverlayController {
             mContext.startActivity(intent);
             closePanel();
         });
-        closeButton.setOnClickListener(v -> closePanel());
+        if (closeButton != null) {
+            closeButton.setOnClickListener(v -> closePanel());
+        }
 
         WindowManager.LayoutParams params = baseLayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -578,6 +582,18 @@ final class OverlayController {
             mPanelTitle.setText(R.string.panel_unknown_game);
         }
         mPanelSubtitle.setText(packageName);
+        if (mPanelIcon != null) {
+            if (!TextUtils.isEmpty(packageName)) {
+                try {
+                    Drawable appIcon = mPackageManager.getApplicationIcon(packageName);
+                    mPanelIcon.setImageDrawable(appIcon);
+                } catch (PackageManager.NameNotFoundException ignored) {
+                    mPanelIcon.setImageResource(R.drawable.ic_gamespace_gamepad);
+                }
+            } else {
+                mPanelIcon.setImageResource(R.drawable.ic_gamespace_gamepad);
+            }
+        }
     }
 
     private void updateQuickLaunch(@NonNull List<String> sidebarPackages) {
@@ -625,12 +641,12 @@ final class OverlayController {
     private ImageView buildQuickLaunchIcon(@Nullable Drawable icon) {
         ImageView imageView = new ImageView(mContext);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                dpToPx(42), dpToPx(42));
-        layoutParams.bottomMargin = dpToPx(10);
+                dpToPx(38), dpToPx(38));
+        layoutParams.bottomMargin = dpToPx(8);
         imageView.setLayoutParams(layoutParams);
         imageView.setBackgroundResource(R.drawable.bg_gamespace_button_secondary);
         imageView.setImageDrawable(icon);
-        imageView.setPadding(dpToPx(8), dpToPx(8), dpToPx(8), dpToPx(8));
+        imageView.setPadding(dpToPx(7), dpToPx(7), dpToPx(7), dpToPx(7));
         return imageView;
     }
 
@@ -640,10 +656,12 @@ final class OverlayController {
         chip.setEllipsize(TextUtils.TruncateAt.END);
         chip.setMaxLines(1);
         chip.setText(text);
-        chip.setPadding(dpToPx(12), dpToPx(8), dpToPx(12), dpToPx(8));
+        chip.setTextColor(mContext.getColor(R.color.gamespace_tile_summary));
+        chip.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        chip.setPadding(dpToPx(12), dpToPx(6), dpToPx(12), dpToPx(6));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.bottomMargin = dpToPx(8);
+        params.bottomMargin = dpToPx(6);
         chip.setLayoutParams(params);
         return chip;
     }
@@ -989,6 +1007,7 @@ final class OverlayController {
         mPanelScrollView = null;
         mQuickLaunchContainer = null;
         mNotificationContainer = null;
+        mPanelIcon = null;
         mPanelTitle = null;
         mPanelSubtitle = null;
         mFpsTile = null;
@@ -1089,11 +1108,15 @@ final class OverlayController {
         tile.setBackgroundResource(active
                 ? R.drawable.bg_gamespace_tile_active
                 : R.drawable.bg_gamespace_tile);
-        int titleColor = resolveColor(active
-                ? android.R.attr.textColorPrimaryInverse
-                : android.R.attr.textColorPrimary);
-        int summaryColor = active ? titleColor : resolveColor(android.R.attr.textColorSecondary);
-        int iconColor = active ? titleColor : mContext.getColor(R.color.gamespace_tile_icon);
+        int titleColor = mContext.getColor(active
+                ? R.color.gamespace_tile_active_text
+                : R.color.gamespace_tile_text);
+        int summaryColor = mContext.getColor(active
+                ? R.color.gamespace_tile_active_summary
+                : R.color.gamespace_tile_summary);
+        int iconColor = mContext.getColor(active
+                ? R.color.gamespace_tile_active_icon
+                : R.color.gamespace_tile_icon);
         title.setTextColor(titleColor);
         summary.setTextColor(summaryColor);
         icon.setImageTintList(android.content.res.ColorStateList.valueOf(iconColor));

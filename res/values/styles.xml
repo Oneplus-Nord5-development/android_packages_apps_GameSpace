@@ -15,5 +15,36 @@
     limitations under the License.
 -->
 <resources>
-    <style name="Theme.GameSpace" parent="Theme.SubSettingsBase" />
+    <!-- Base Material 3 Expressive Application Theme -->
+    <style name="Theme.GameSpace" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+        <item name="android:windowLightNavigationBar">?attr/isLightTheme</item>
+    </style>
+
+    <!-- Material 3 Expressive Card for Setting Groups -->
+    <style name="Widget_GameSpace_Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- Hero Card for Primary Master Switch -->
+    <style name="Widget_GameSpace_Card_Hero" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainerHigh</item>
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- Icon Container for Setting Item Rows -->
+    <style name="Widget_GameSpace_IconContainer" parent="">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_gamespace_item_icon</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
